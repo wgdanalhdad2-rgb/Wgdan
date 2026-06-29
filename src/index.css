@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Cairo", "Inter", ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--font-sans);
+  direction: rtl;
+  background-color: #0c0c0e;
+  color: #f4f4f5;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Light Mode Overrides with high contrast for eye comfort in strong light */
+html.light {
+  background-color: #f5f7fa !important;
+  color: #1e293b !important;
+  
+  /* Redefine Tailwind Zinc colors for Light Mode */
+  --color-zinc-950: #ffffff;
+  --color-zinc-900: #f8fafc;
+  --color-zinc-850: #f1f5f9;
+  --color-zinc-800: #e2e8f0;
+  --color-zinc-700: #cbd5e1;
+  --color-zinc-600: #94a3b8;
+  --color-zinc-500: #64748b;
+  --color-zinc-400: #475569;
+  --color-zinc-300: #334155;
+  --color-zinc-200: #1e293b;
+  --color-zinc-100: #0f172a;
+  --color-zinc-50: #0f172a;
+  
+  /* Invert White for readability, keep black as black */
+  --color-white: #0f172a;
+  --color-black: #000000;
+  
+  /* Darken accents for better contrast on light background */
+  --color-emerald-400: #059669;
+  --color-emerald-500: #059669;
+  --color-rose-400: #e11d48;
+  --color-rose-500: #e11d48;
+  --color-amber-400: #d97706;
+  --color-amber-500: #d97706;
+  --color-sky-400: #0284c7;
+}
+
+html.light body {
+  background-color: #f5f7fa !important;
+  color: #1e293b !important;
+}
+
+/* Base backgrounds for hardcoded colors */
+html.light .bg-\[\#0c0c0e\],
+html.light .bg-\[\#0c0c0f\],
+html.light .bg-\[\#09090b\],
+html.light .bg-\[\#08080a\],
+html.light .bg-\[\#0b0b0d\],
+html.light .bg-\[\#0f0f12\],
+html.light .bg-\[\#111115\],
+html.light .bg-\[\#111116\],
+html.light .bg-\[\#121217\],
+html.light .bg-\[\#141419\],
+html.light .bg-\[\#18181b\],
+html.light .bg-\[\#0e0e12\] {
+  background-color: #ffffff !important;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px -1px rgba(0, 0, 0, 0.05) !important;
+}
+
+html.light .bg-\[\#0c0c0e\]\/45 {
+  background-color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Hardcoded text colors */
+html.light .text-\[\#fefefe\],
+html.light .text-\[\#f4f4f5\] {
+  color: #0f172a !important;
+}
+
+/* Hardcoded border colors */
+html.light .border-\[\#1b1b22\] {
+  border-color: #e2e8f0 !important;
+}
+
+/* Input elements inside forms */
+html.light input,
+html.light select,
+html.light textarea {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+}
+
+html.light input::placeholder,
+html.light textarea::placeholder {
+  color: #94a3b8 !important;
+}
+
+/* Sidebar tab headers active state */
+html.light .bg-zinc-800 {
+  background-color: #f1f5f9 !important;
+  color: #c5a059 !important;
+}
+
+/* Message items */
+html.light .bg-zinc-900:not(header):not(section),
+html.light .bg-zinc-900.text-zinc-200 {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #e2e8f0 !important;
+}
+
+html.light .bg-\[\#c5a059\] {
+  background-color: #c5a059 !important;
+  color: #000000 !important;
+}
+
+/* Custom adjustment for list item colors inside message body in light mode */
+html.light .text-zinc-300 strong {
+  color: #0f172a !important;
+}
+
+/* Print styles for proforma invoice */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+  
+  #printable-invoice,
+  #printable-invoice * {
+    visibility: visible !important;
+  }
+  
+  #printable-invoice {
+    position: absolute !important;
+    left: 0 !important;
+    top: 0 !important;
+    width: 100% !important;
+    max-height: none !important;
+    overflow: visible !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: none !important;
+    box-shadow: none !important;
+    background: white !important;
+    color: black !important;
+  }
+  
+  /* Force color printing */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+/* Utilities to hide scrollbar but allow scrolling */
+.hide-scrollbar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* Chrome, Safari and Opera */
+}
+
